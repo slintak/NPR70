@@ -1,0 +1,1 @@
+This small windows program creates the "SI4463.h" files for each modulation, with one different constant name for each configuration, from the .h generated with "Scilicol Labs - Wireless Development Suite". 
