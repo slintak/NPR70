@@ -1,0 +1,3 @@
+[submodule "NPR_14/mbed-os"]
+	path = NPR_14/mbed-os
+	url = https://github.com/ARMmbed/mbed-os.git
