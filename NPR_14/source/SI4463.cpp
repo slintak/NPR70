@@ -550,7 +550,7 @@ int SI4463_read_temperature(SI4463_Chip* SI4463) {
 static int previous_temperature = 300;
 
 void SI4463_periodic_temperature_check(SI4463_Chip* SI4463) {
-	int need_recalibrate;
+	// int need_recalibrate;
 	int delta_temperature;
 	int i;
 	
@@ -562,14 +562,14 @@ void SI4463_periodic_temperature_check(SI4463_Chip* SI4463) {
 	delta_temperature = G_temperature_SI4463 - previous_temperature;
 	if ( ( delta_temperature > 14) || (delta_temperature < -14) ) {
 	//if (1) {
-		need_recalibrate = 1;
+		// need_recalibrate = 1;
 		i = SI4463_configure_all();
 		previous_temperature = G_temperature_SI4463;
 		if (i == 0) {//fail to recalibrate
 			NVIC_SystemReset();
 		}
-	} else {
-		need_recalibrate = 0;
+	// } else {
+	// 	need_recalibrate = 0;
 	}
 	//RADIO_restart_if_necessary(0, need_recalibrate, 0); //0,need,0
 }
@@ -643,7 +643,7 @@ void SI4463_FIFO_RX_transfer(unsigned int size) {
 void SI4463_FIFO_TX_transfer(unsigned int size) {
 	//unsigned char trash[150]; //static
 	unsigned char command[5];
-	int size_to_write;
+	// int size_to_write;
 	G_SI4463->cs->write(0);
 	command[0] = 0x66;
 	G_SI4463->spi->transfer_2 (command, 1, SI_trash, 1);
@@ -1282,8 +1282,8 @@ void SI4432_TX_test(unsigned int req_duration) { //duration in ms
 	unsigned int timer_begin;
 	unsigned int timer_snapshot;
 	unsigned int real_duration;
-	unsigned char SI4463_state;
-	unsigned char loc_answer[8];
+	// unsigned char SI4463_state;
+	// unsigned char loc_answer[8];
 	unsigned char trash[4];
 	
 	TX_test_inprogress = 1;
@@ -1313,7 +1313,8 @@ void SI4432_TX_test(unsigned int req_duration) { //duration in ms
 
 void SI4463_set_frequency(float freq_base, float freq_step) {
 	unsigned char radio_config[15] = {0x11, 0x40, 0x06, 0x00};
-	unsigned int step_size_temp, FC_int, FC_frac_int, i;
+	unsigned int step_size_temp, FC_int, FC_frac_int;
+	// unsigned int i;
 	float FC_int_float, FC_frac_float;
 	
 	//FC_int_float = freq_base / 7.5;

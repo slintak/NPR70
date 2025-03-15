@@ -19,7 +19,7 @@
 #define SIGNALING_F4
 
 #include "mbed.h"
-#define connexion_timeout 10
+#define CONNECTION_TIMEOUT 10
 //multiple of signaling_period 10sec or 20sec or 30sec
 
 void signaling_frame_exploitation (unsigned char* unFECdata, int unFECsize, int TA_input);

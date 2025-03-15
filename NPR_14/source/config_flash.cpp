@@ -130,7 +130,7 @@ void NFPR_config_read(AnalogIn* analog_pin) {
 unsigned char NFPR_random_generator(AnalogIn* analog_pin) {
 	unsigned short interm_random;
 	unsigned char random_8;
-	int i, j;
+	int i;
 	random_8 = 0;
 	for (i=0; i<8; i++) {
 		interm_random = analog_pin->read_u16();

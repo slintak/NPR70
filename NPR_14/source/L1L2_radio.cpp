@@ -68,7 +68,7 @@ void FDDdown_RX_pckt_treat(unsigned char* in_data, int size) {
 	//debug_counter++;
 }
 
-static int RX_FRAME_count_debug = 0;
+// static int RX_FRAME_count_debug = 0;
 
 void radio_RX_FIFO_dequeue (W5500_chip* W5500) {
 	static unsigned char ethernet_buffer[radio_addr_table_size][1600]; 
@@ -99,7 +99,7 @@ void radio_RX_FIFO_dequeue (W5500_chip* W5500) {
 	unsigned char TDMA_byte; 
 	unsigned char is_downlink;
 	unsigned long int timer_snapshot;
-	int i;
+	// int i;
 	
 	if (RX_FIFO_last_received > RX_FIFO_RD_point) { //something new in RX FIFO
 		timer_snapshot = GLOBAL_timer.read_us();
@@ -418,7 +418,7 @@ void segment_and_push (unsigned char* data_unsegmented, int total_size, unsigned
 	unsigned char radio_pckt[360];
 #endif
 	int size_sent;
-	unsigned int rsize_needed;
+	// unsigned int rsize_needed;
 	unsigned int timer_snapshot;
 	size_remaining = total_size;
 
@@ -428,7 +428,7 @@ void segment_and_push (unsigned char* data_unsegmented, int total_size, unsigned
 	
 	segment_counter = 0;
 	size_sent = 0;
-	rsize_needed = 100 + (total_size * 1.4);
+	// rsize_needed = 100 + (total_size * 1.4);
 	if (total_size < 1510) {
 		if (TX_FIFO_full_global(1) == 0) {
 			G_uplink_bandwidth_temp = G_uplink_bandwidth_temp + total_size; 

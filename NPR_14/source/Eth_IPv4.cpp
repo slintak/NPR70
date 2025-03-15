@@ -60,7 +60,7 @@ int Eth_RX_dequeue (W5500_chip* W5500) {
 	
 	int RX_size=0;
 	int mac_size=0;
-	int i;
+	// int i;
 	//int match_RTP = 1;
 	unsigned int ethertype;
 	if (*(W5500->interrupt)==0) {

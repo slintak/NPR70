@@ -483,7 +483,7 @@ void signaling_TX_add_entry(unsigned char* raw_data, int size) {
 
 //void signaling_frame_push(unsigned char* TX_signal_frame_raw) {
 void signaling_frame_push(void) {
-	int rsize_needed;
+	// int rsize_needed;
 	int size_w_FEC;
 	int size_wo_FEC;
 	unsigned char rframe_length;
@@ -496,7 +496,7 @@ void signaling_frame_push(void) {
 	if (size_wo_FEC < 69) {
 		size_wo_FEC = 69;
 	}
-	rsize_needed = 100 + (size_wo_FEC * 1.4);
+	// rsize_needed = 100 + (size_wo_FEC * 1.4);
 
 	//printf("sig NO ext SRAM\r\n");
 	//if ((TXPS_FIFO->last_ready - TXPS_FIFO->RD_point) < (TXPS_FIFO_threshold_sig - rsize_needed) ) { //16380  
@@ -546,7 +546,7 @@ void signaling_periodic_call() { // called every 2 to 6 seconds
 			signaling_connect_req_TX();
 			connect_state_machine_counter = 0;
 		}
-		if ( (my_client_radio_connexion_state==2) && (time_counter_last_ack > connexion_timeout) ) {//timeout, no ACK received for long time
+		if ( (my_client_radio_connexion_state==2) && (time_counter_last_ack > CONNECTION_TIMEOUT) ) {//timeout, no ACK received for long time
 			// transition to state 1 "waiting for connection"
 			my_client_radio_connexion_state = 1;
 			radio_flush_TX_FIFO();
@@ -566,7 +566,7 @@ void signaling_periodic_call() { // called every 2 to 6 seconds
 		timer_snapshot = GLOBAL_timer.read_us();
 		for (i=0; i< radio_addr_table_size; i++) {
 			time_since_last_ack = timer_snapshot - CONF_radio_addr_table_date[i];
-			if ( (CONF_radio_addr_table_status[i] == 1) && (time_since_last_ack > (2000000*connexion_timeout*CONF_signaling_period)) ) {
+			if ( (CONF_radio_addr_table_status[i] == 1) && (time_since_last_ack > (2000000UL*CONNECTION_TIMEOUT*CONF_signaling_period)) ) {
 				CONF_radio_addr_table_status[i] = 0; // force disconnect
 			}
 		}

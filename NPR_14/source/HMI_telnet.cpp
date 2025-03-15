@@ -426,7 +426,7 @@ void HMI_exit(void) {
 }
 
 static char HMI_yes_no[2][4]={'n','o',0,0, 'y','e','s',0};
-static char HMI_trans_modes[2][4]={'I','P',0,0,'E','t','h',0};
+// static char HMI_trans_modes[2][4]={'I','P',0,0,'E','t','h',0};
 static char HMI_master_FDD[3][5]={'n','o',0,0,0,'d','o','w','n',0,'u','p',0,0,0};
 
 void HMI_display_config(void) {
@@ -478,7 +478,7 @@ void HMI_set_command(char* loc_param1, char* loc_param2) {
 	unsigned char temp_uchar;
 	unsigned long int temp_uint;
 	float frequency;
-	unsigned char previous_freq_band;
+	// unsigned char previous_freq_band;
 	char DHCP_warning[50];
 	if ((loc_param1) && (loc_param2)) {
 		if (strcmp(loc_param1, "callsign") == 0) {
@@ -822,7 +822,7 @@ void HMI_print_who(void) {
 		loc_age = loc_age / 1000000;
 		if (is_TDMA_master) {loc_age = 0;} // master : already timeout in state machine
 		//printf ("age:%i ", loc_age);
-		if ( (CONF_radio_addr_table_status[i]) && (loc_age < connexion_timeout) ) {
+		if ( (CONF_radio_addr_table_status[i]) && (loc_age < CONNECTION_TIMEOUT) ) {
 			HMI_printf (" ID:%i Callsign:%s ", i, CONF_radio_addr_table_callsign[i]+2);
 			IP_int2char (CONF_radio_addr_table_IP_begin[i], IP_c);
 			HMI_printf ("IP start:%i.%i.%i.%i ", IP_c[0], IP_c[1], IP_c[2], IP_c[3]);
