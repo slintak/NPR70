@@ -27,6 +27,7 @@
 #include "TDMA.h"
 #include "signaling.h"
 #include "config_flash.h"
+#include "SPI_F4HDK.h"
 
 #include "ext_SRAM2.h"
 
@@ -46,12 +47,12 @@ DigitalOut LED_connected(PA_12);
 
 DigitalIn Int_W5500(PA_8);
 DigitalOut CS1(PA_11);//CS W5500
-SPI spi_2(PB_5, PB_4, PB_3); // mosi, miso, sclk
+SPI_F4HDK spi_2(PB_5, PB_4, PB_3); // mosi, miso, sclk
 DigitalOut CS3(PB_0);// CS ext SRAM PB_0 
 
 InterruptIn Int_SI4463(PA_3);
 DigitalOut CS2(PA_4);
-SPI spi_1(PA_7, PA_6, PA_5); // mosi, miso, sclk
+SPI_F4HDK spi_1(PA_7, PA_6, PA_5); // mosi, miso, sclk
 
 int main()
 {

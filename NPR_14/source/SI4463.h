@@ -20,6 +20,7 @@
 
 #include "mbed.h"
 #include "SI4463.h"
+#include "SPI_F4HDK.h"
 
 #define SI4463_offset_size 90
 #define SI4463_CONF_RX_FIFO_threshold 90 
@@ -32,7 +33,7 @@
 //#define SI4463_zero_frame_time 590
 
 struct SI4463_Chip{
-    SPI* spi;
+    SPI_F4HDK* spi;
     DigitalOut* cs;
 	InterruptIn* interrupt;
 	int RX_TX_state; //0:nothing 1:RX 2:TX

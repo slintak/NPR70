@@ -249,6 +249,7 @@ OBJECTS += ./source/Eth_IPv4.o
 OBJECTS += ./source/HMI_telnet.o
 OBJECTS += ./source/L1L2_radio.o
 OBJECTS += ./source/SI4463.o
+OBJECTS += ./source/SPI_F4HDK.o
 OBJECTS += ./source/TDMA.o
 OBJECTS += ./source/Virt_Chan.o
 OBJECTS += ./source/W5500.o

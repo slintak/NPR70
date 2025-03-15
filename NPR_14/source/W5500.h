@@ -19,9 +19,10 @@
 #define W5500_F4
 
 #include "mbed.h"
+#include "SPI_F4HDK.h"
 
 struct W5500_chip{
-    SPI* spi_port;
+    SPI_F4HDK* spi_port;
     DigitalOut* cs;
 	DigitalIn* interrupt;
 	unsigned char sock_interrupt;
