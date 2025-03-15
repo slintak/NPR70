@@ -164,7 +164,6 @@ OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L4/device/stm32l4xx_hal_irda
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L4/device/stm32l4xx_hal_iwdg.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L4/device/stm32l4xx_hal_lcd.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L4/device/stm32l4xx_hal_lptim.o
-OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L4/device/stm32l4xx_hal_msp_template.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L4/device/stm32l4xx_hal_nand.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L4/device/stm32l4xx_hal_nor.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L4/device/stm32l4xx_hal_opamp.o
@@ -303,7 +302,7 @@ LINKER_SCRIPT ?= .././mbed-os/targets/TARGET_STM/TARGET_STM32L4/TARGET_STM32L432
 
 AS      = 'arm-none-eabi-gcc' '-x' 'assembler-with-cpp' '-c' '-Wall' '-Wextra' '-Wno-unused-parameter' '-Wno-missing-field-initializers' '-fmessage-length=0' '-fno-exceptions' '-fno-builtin' '-ffunction-sections' '-fdata-sections' '-funsigned-char' '-MMD' '-fno-delete-null-pointer-checks' '-fomit-frame-pointer' '-Os' '-g1' '-DMBED_DEBUG' '-DMBED_TRAP_ERRORS_ENABLED=1' '-mcpu=cortex-m4' '-mthumb' '-mfpu=fpv4-sp-d16' '-mfloat-abi=softfp'
 CC      = 'arm-none-eabi-gcc' '-std=gnu99' '-c' '-Wall' '-Wextra' '-Wno-unused-parameter' '-Wno-missing-field-initializers' '-fmessage-length=0' '-fno-exceptions' '-fno-builtin' '-ffunction-sections' '-fdata-sections' '-funsigned-char' '-MMD' '-fno-delete-null-pointer-checks' '-fomit-frame-pointer' '-Os' '-g1' '-DMBED_DEBUG' '-DMBED_TRAP_ERRORS_ENABLED=1' '-mcpu=cortex-m4' '-mthumb' '-mfpu=fpv4-sp-d16' '-mfloat-abi=softfp'
-CPP     = 'arm-none-eabi-g++' '-std=gnu++98' '-fno-rtti' '-Wvla' '-c' '-Wall' '-Wextra' '-Wno-unused-parameter' '-Wno-missing-field-initializers' '-fmessage-length=0' '-fno-exceptions' '-fno-builtin' '-ffunction-sections' '-fdata-sections' '-funsigned-char' '-MMD' '-fno-delete-null-pointer-checks' '-fomit-frame-pointer' '-Os' '-g1' '-DMBED_DEBUG' '-DMBED_TRAP_ERRORS_ENABLED=1' '-mcpu=cortex-m4' '-mthumb' '-mfpu=fpv4-sp-d16' '-mfloat-abi=softfp'
+CPP     = 'arm-none-eabi-g++' '-std=gnu++11' '-fno-rtti' '-Wvla' '-c' '-Wall' '-Wextra' '-Wno-unused-parameter' '-Wno-missing-field-initializers' '-fmessage-length=0' '-fno-exceptions' '-fno-builtin' '-ffunction-sections' '-fdata-sections' '-funsigned-char' '-MMD' '-fno-delete-null-pointer-checks' '-fomit-frame-pointer' '-Os' '-g1' '-DMBED_DEBUG' '-DMBED_TRAP_ERRORS_ENABLED=1' '-mcpu=cortex-m4' '-mthumb' '-mfpu=fpv4-sp-d16' '-mfloat-abi=softfp'
 LD      = 'arm-none-eabi-gcc'
 ELF2BIN = 'arm-none-eabi-objcopy'
 PREPROC = 'arm-none-eabi-cpp' '-E' '-P' '-Wl,--gc-sections' '-Wl,--wrap,main' '-Wl,--wrap,_malloc_r' '-Wl,--wrap,_free_r' '-Wl,--wrap,_realloc_r' '-Wl,--wrap,_memalign_r' '-Wl,--wrap,_calloc_r' '-Wl,--wrap,exit' '-Wl,--wrap,atexit' '-Wl,-n' '-mcpu=cortex-m4' '-mthumb' '-mfpu=fpv4-sp-d16' '-mfloat-abi=softfp'
@@ -361,7 +360,7 @@ C_FLAGS += -DARM_MATH_CM4
 C_FLAGS += -include
 C_FLAGS += mbed_config.h
 
-CXX_FLAGS += -std=gnu++98
+CXX_FLAGS += -std=gnu++11
 CXX_FLAGS += -fno-rtti
 CXX_FLAGS += -Wvla
 CXX_FLAGS += -D__MBED__=1
