@@ -35,24 +35,27 @@
 //Serial pc(SERIAL_TX, SERIAL_RX); // Nucleo
 //Serial pc(USBTX, USBRX); //NXP LPC1769
 
-DigitalInOut FDD_trig_pin(PA_10);//GPIO_11
-InterruptIn FDD_trig_IRQ(PA_10);//GPIO_11
-DigitalOut PTT_PA_pin(PA_9);//GPIO_10
+DigitalInOut FDD_trig_pin(PA_1);//GPIO_11
+InterruptIn FDD_trig_IRQ(PA_1);//GPIO_11
+DigitalOut PTT_PA_pin(PA_0);//GPIO_10
 
-DigitalOut SI4463_SDN(PA_1);
+DigitalOut SI4463_SDN(PA_10);
 
+// TODO: Get random seed from somewhere else.
+// TODO: Random PIN is not present on the new PCB.
 AnalogIn Random_pin(PA_0);
-DigitalOut LED_RX_loc(PB_1);
-DigitalOut LED_connected(PA_12);
 
-DigitalIn Int_W5500(PA_8);
-DigitalOut CS1(PA_11);//CS W5500
-SPI_F4HDK spi_2(PB_5, PB_4, PB_3); // mosi, miso, sclk
-DigitalOut CS3(PB_0);// CS ext SRAM PB_0 
+DigitalOut LED_RX_loc(PB_7);
+DigitalOut LED_connected(PA_4);
 
-InterruptIn Int_SI4463(PA_3);
-DigitalOut CS2(PA_4);
-SPI_F4HDK spi_1(PA_7, PA_6, PA_5); // mosi, miso, sclk
+DigitalIn Int_W5500(PB_1);
+DigitalOut CS1(PA_8);//CS W5500
+SPI_F4HDK spi_2(PA_7, PA_6, PA_5); // mosi, miso, sclk (Wiznet+SRAM)
+DigitalOut CS3(PB_0);// CS ext SRAM
+
+InterruptIn Int_SI4463(PA_9);
+DigitalOut CS2(PB_6);
+SPI_F4HDK spi_1(PB_5, PB_4, PB_3); // mosi, miso, sclk (radio)
 
 int main()
 {
