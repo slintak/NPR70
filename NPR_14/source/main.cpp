@@ -60,7 +60,7 @@ SPI_F4HDK spi_1(PB_5, PB_4, PB_3); // mosi, miso, sclk (radio)
 int main()
 {
     wait_ms(200);
-	pc.baud(921600);
+	pc.baud(115200);
     pc.printf("\r\n\r\nNPR FW %s\r\n", FW_VERSION);
 	
 	Timer slow_timer; 
