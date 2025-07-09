@@ -23,7 +23,7 @@
 #include "global_variables.h"
 
 #define HMI_printf(param, ...) sprintf (HMI_out_str, param, ##__VA_ARGS__);\
-	HMI_printf_detail();
+    HMI_printf_detail();
 
 int telnet_loop(W5500_chip* W5500);
 

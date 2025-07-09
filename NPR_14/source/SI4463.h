@@ -35,10 +35,10 @@
 struct SI4463_Chip{
     SPI_F4HDK* spi;
     DigitalOut* cs;
-	InterruptIn* interrupt;
-	int RX_TX_state; //0:nothing 1:RX 2:TX
-	DigitalOut* RX_LED;
-	DigitalOut* SDN;
+    InterruptIn* interrupt;
+    int RX_TX_state; //0:nothing 1:RX 2:TX
+    DigitalOut* RX_LED;
+    DigitalOut* SDN;
 };
 
 int SI4463_CTS_read_answer(SI4463_Chip* SI4463, unsigned char* data, int size, int timeout);

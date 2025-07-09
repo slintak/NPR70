@@ -24,8 +24,8 @@
 struct W5500_chip{
     SPI_F4HDK* spi_port;
     DigitalOut* cs;
-	DigitalIn* interrupt;
-	unsigned char sock_interrupt;
+    DigitalIn* interrupt;
+    unsigned char sock_interrupt;
 };
 
 void W5500_read_long(W5500_chip* SPI_p_loc, unsigned int W5500_addr, unsigned char bloc_addr, unsigned char* RX_data, int RX_size);

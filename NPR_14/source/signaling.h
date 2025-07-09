@@ -25,9 +25,9 @@
 void signaling_frame_exploitation (unsigned char* unFECdata, int unFECsize, int TA_input);
 
 void signaling_whois_interpret(unsigned char loc_ID, unsigned char* loc_callsign, 
-	unsigned long int loc_IP_start, unsigned long int loc_IP_size, 
-	unsigned char RSSI_loc, unsigned short int BER_loc, short int TA_loc);
-	
+    unsigned long int loc_IP_start, unsigned long int loc_IP_size, 
+    unsigned char RSSI_loc, unsigned short int BER_loc, short int TA_loc);
+    
 void signaling_print_who(void);
 
 unsigned long int signaling_lookfor_IP_range(unsigned long int req_size);
@@ -49,15 +49,15 @@ void signaling_disconnect_ACK_TX (unsigned loc_ID, unsigned char* loc_callsign);
 void signaling_frame_init();
 
 void signaling_single_whois_TX(unsigned char loc_ID, char* loc_callsign, 
-		unsigned long int loc_IP_start, unsigned long int loc_IP_size, 
-		unsigned char RSSI_loc, unsigned short int BER_loc, short int TA_loc);
-		
+        unsigned long int loc_IP_start, unsigned long int loc_IP_size, 
+        unsigned char RSSI_loc, unsigned short int BER_loc, short int TA_loc);
+        
 void signaling_TX_add_entry(unsigned char* raw_data, int size);
-		
+        
 void signaling_whois_TX();
 
 void signaling_frame_push();
-	
+    
 void signaling_periodic_call();
-	
+    
 #endif

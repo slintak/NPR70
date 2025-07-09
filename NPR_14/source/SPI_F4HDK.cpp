@@ -11,10 +11,10 @@ int spi_master_transfer_2(spi_t *obj, const unsigned char *tx, size_t tx_length,
     struct spi_s *spiobj = SPI_S(obj);
     SPI_HandleTypeDef *handle = &(spiobj->handle);
 
-	if(tx_length < rx_length) {
-		tx_length = rx_length;
-	}
-	
+    if(tx_length < rx_length) {
+        tx_length = rx_length;
+    }
+    
     /*  Use 10ms timeout */
     uint16_t ret = HAL_SPI_TransmitReceive(handle, (uint8_t *)tx, (uint8_t *)rx, tx_length, 3); //3
 
@@ -26,5 +26,5 @@ int spi_master_transfer_2(spi_t *obj, const unsigned char *tx, size_t tx_length,
 }
 
 int SPI_F4HDK::transfer_2(const unsigned char *tx_buffer, int tx_length, unsigned char *rx_buffer, int rx_length) {
-	return spi_master_transfer_2 (&_spi, tx_buffer, tx_length, rx_buffer, rx_length);
+    return spi_master_transfer_2 (&_spi, tx_buffer, tx_length, rx_buffer, rx_length);
 }

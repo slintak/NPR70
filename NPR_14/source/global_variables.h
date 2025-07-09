@@ -28,20 +28,20 @@
 extern ext_SRAM_chip* SPI_SRAM_p;
 
 #ifdef FREQ_BAND_2M
-	#define CONF_DEF_FREQ 1000
-	#define FREQ_RANGE_MIN 144
-	#define FREQ_RANGE_MAX 148
-	#define FREQ_MAX_RAW 4000
-	#define FREQ_BAND "2m"
-	#define SI4463_NOUTDIV 24
+    #define CONF_DEF_FREQ 1000
+    #define FREQ_RANGE_MIN 144
+    #define FREQ_RANGE_MAX 148
+    #define FREQ_MAX_RAW 4000
+    #define FREQ_BAND "2m"
+    #define SI4463_NOUTDIV 24
 #else 
-	/*420 - 450MHz*/
-	#define CONF_DEF_FREQ 17000
-	#define FREQ_RANGE_MIN 420
-	#define FREQ_RANGE_MAX 450
-	#define FREQ_MAX_RAW 30000
-	#define FREQ_BAND "70cm"
-	#define SI4463_NOUTDIV 8
+    /*420 - 450MHz*/
+    #define CONF_DEF_FREQ 17000
+    #define FREQ_RANGE_MIN 420
+    #define FREQ_RANGE_MAX 450
+    #define FREQ_MAX_RAW 30000
+    #define FREQ_BAND "70cm"
+    #define SI4463_NOUTDIV 8
 #endif
 
 #define FW_VERSION "2025_03_29"
@@ -145,17 +145,17 @@ extern Timer GLOBAL_timer;
 
 // *** ARP and DHCP and "routing" ***
 struct LAN_conf_T { 
-	
-	//unsigned char modem_MAC[6]; 
-	unsigned long int LAN_modem_IP;
-	unsigned long int DHCP_range_start;
-	unsigned long int DHCP_range_size; //4
-	unsigned long int LAN_subnet_mask;
-	unsigned long int LAN_def_route;
-	unsigned char LAN_def_route_activ;
-	unsigned char LAN_DNS_activ;
-	unsigned long int LAN_DNS_value;
-	unsigned char DHCP_server_active;
+    
+    //unsigned char modem_MAC[6]; 
+    unsigned long int LAN_modem_IP;
+    unsigned long int DHCP_range_start;
+    unsigned long int DHCP_range_size; //4
+    unsigned long int LAN_subnet_mask;
+    unsigned long int LAN_def_route;
+    unsigned char LAN_def_route_activ;
+    unsigned char LAN_DNS_activ;
+    unsigned long int LAN_DNS_value;
+    unsigned char DHCP_server_active;
 };
 
 extern LAN_conf_T LAN_conf_saved;
