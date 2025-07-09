@@ -41,10 +41,6 @@ DigitalOut PTT_PA_pin(PA_0);//GPIO_10
 
 DigitalOut SI4463_SDN(PA_10);
 
-// TODO: Get random seed from somewhere else.
-// TODO: Random PIN is not present on the new PCB.
-AnalogIn Random_pin(PA_0);
-
 DigitalOut LED_RX_loc(PB_7);
 DigitalOut LED_connected(PA_4);
 
@@ -162,7 +158,7 @@ int main()
 	}
 	
 	wait_ms(100);
-	NFPR_config_read(&Random_pin);
+	NFPR_config_read();
 
 	//SI4463_print_version(G_SI4463);//!!!!
 	SI4463_get_state(G_SI4463);

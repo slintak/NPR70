@@ -21,6 +21,7 @@
 #include "Eth_IPv4.h"
 #include "HMI_telnet.h"
 #include "TDMA.h"
+#include "trng_api.h"
 
 static unsigned char raw_config_data[260];
 static unsigned int config_index;
@@ -103,17 +104,21 @@ void virt_EEPROM_errase_all(void) {
 
 // higher level functions
 
-void NFPR_config_read(AnalogIn* analog_pin) {
+void NFPR_config_read(void) {
 	int i;
 	unsigned char default_config[260] = NFPR_default_config;
+	uint8_t random[2];
+
 	config_index = virt_EEPROM_read(raw_config_data);
 	if (config_index == 0) { //no previous config found
 		for (i=0; i<256; i++) {
 			raw_config_data[i] = default_config[i];
 		}
+
 		//MAC random 2 LSB values
-		raw_config_data[58] = NFPR_random_generator(analog_pin);
-		raw_config_data[59] = NFPR_random_generator(analog_pin);
+		NFPR_random_generator(random, sizeof(random));
+		raw_config_data[58] = random[0];
+		raw_config_data[59] = random[1];
 		raw_config_data[5] = raw_config_data[58];//callsign 1st char
 		raw_config_data[6] = raw_config_data[59];//callsign 2nd char
 		config_index = virt_EEPROM_write (raw_config_data, config_index);//save the MAC
@@ -127,19 +132,24 @@ void NFPR_config_read(AnalogIn* analog_pin) {
 	}
 }
 
-unsigned char NFPR_random_generator(AnalogIn* analog_pin) {
-	unsigned short interm_random;
-	unsigned char random_8;
-	int i;
-	random_8 = 0;
-	for (i=0; i<8; i++) {
-		interm_random = analog_pin->read_u16();
-		interm_random = (interm_random & 0x10)>>4;
-		interm_random = (interm_random << i);
-		random_8 = random_8 + interm_random;
-		wait_ms(4);
+/**
+ * Generate and save random `size` bytes into the `rnd` array.
+ * This code uses the STM32 TRNG HW.
+ * Returns `true` if the resulting data are random.
+ */
+bool NFPR_random_generator(uint8_t *rnd, size_t size) {
+	trng_t trng_obj;
+	size_t random_length = 0;
+
+	trng_init(&trng_obj);
+	trng_get_bytes(&trng_obj, rnd, size, &random_length);
+	trng_free(&trng_obj);
+
+	if(random_length == size) {
+		return true;
 	}
-	return random_8;
+
+	return false;
 }
 
 unsigned int NFPR_config_save(void) {

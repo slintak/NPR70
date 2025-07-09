@@ -65,7 +65,7 @@
 
 unsigned int virt_EEPROM_read(unsigned char* data);
 
-unsigned char NFPR_random_generator(AnalogIn* analog_pin);
+bool NFPR_random_generator(uint8_t *rnd, size_t size);
 
 unsigned int virt_EEPROM_write(unsigned char* in_data, unsigned int previous_index);
 
@@ -77,7 +77,7 @@ void apply_config_from_raw_string(unsigned char* data_r);
 
 void write_config_to_raw_string (unsigned char* data_r);
 
-void NFPR_config_read(AnalogIn* analog_pin);
+void NFPR_config_read(void);
 
 unsigned int NFPR_config_save(void);
 
