@@ -1,3 +1,0 @@
-You can compile with either:
- * ARM Mbed CLI (the offline toolchain for ARM Mbed)
- * GCC_ARM (via makefile)

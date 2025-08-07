@@ -39,7 +39,7 @@ VPATH = ..
 ###############################################################################
 # Project settings
 
-PROJECT := NPR_14
+PROJECT := NPR70
 
 
 # Project settings
