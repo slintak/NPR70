@@ -1,0 +1,22 @@
+{
+  "title": "NPR70 Project",
+  "name": "npr-revB",
+  "description": "This is the hardware project page for New Packet Radio.",
+  "files": [
+    {"file": "gerbers_jlcpcb.zip", "description": "Gerber Files for JLCPCB (ZIP)"},
+    {"file": "gerbers_pcbway.zip", "description": "Gerber Files for PCBWay (ZIP)"},
+    {"file": "npr-revB_top_pos.csv", "description": "Position File (CSV)"},
+    {"file": "npr-revB_pos_jlcpcb.csv", "description": "Position File for JLCPCB (CSV)"},
+    {"file": "npr-revB_bom.csv", "description": "Bill of Materials for JLCPCB (CSV)"},
+    {"file": "npr-revB_bom.xml", "description": "Bill of Materials (XML)"},
+    {"file": "npr-revB_schematic.pdf", "description": "Schematic (PDF)"},
+    {"file": "npr-revB_schematic_bw.pdf", "description": "Schematic without Colors (PDF)"},
+    {"file": "npr-revB_model.step.xz", "description": "3D Model (STEP.XZ)"},
+    {"file": "npr-revB_model.vrml.xz", "description": "3D Model (VRML.XZ)"}
+  ],
+  "renders": [
+    {"suffix": "preview", "alt": "Isometric view of the PCB"},
+    {"suffix": "front",   "alt": "Top side of the PCB"},
+    {"suffix": "back",    "alt": "Bottom side of the PCB"}
+  ]
+}
