@@ -61,7 +61,7 @@ $(TEMPLATE_FAB_DIR)/gerbers_%.zip: $(BOARD_PATH)/$(BOARD).kicad_pcb
 # Convert .md → build/.html using python-markdown
 build/%.html: %.md
 	@mkdir -p build
-	python3 -m markdown $< > $@
+	pandoc -f gfm -t html5 --standalone --metadata=title:"$*" "$<" -o "$@"
 
 build/%.html.j2: $(TEMPLATE_SRC_DIR)/%.html.j2
 	@mkdir -p build
