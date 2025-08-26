@@ -43,13 +43,10 @@ jobs:
         working-directory: src
         run: make
 
-      - name: List outputs
-        run: ls -l src/BUILD || true
-
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: npr70-firmware-${{ github.sha }}
+          name: build-fw
           path: |
             src/BUILD/NPR70.bin
             src/BUILD/NPR70.hex
@@ -79,6 +76,19 @@ jobs:
         with:
           name: build-web
           path: build/
+
+      - name: Get Firmware Files
+        uses: actions/download-artifact@v4
+        with:
+          name: build-fw
+          path: fw/
+
+      - name: Bundle firmware ZIP into site files
+        shell: bash
+        run: |
+          mkdir -p build/files
+          zip -j "build/files/npr70-fw-${GITHUB_SHA::7}.zip" \
+            fw/NPR70.bin fw/NPR70.hex fw/NPR70.elf
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
