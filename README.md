@@ -21,9 +21,9 @@ This project is **primarily for amateur radio operators** interested in building
 and experimenting with modern digital data networks, Hamnet, telemetry, or
 similar applications on the UHF band.
 
-It is a fork/derivative of the [original NPR project by F4HDK]
-(https://hackaday.io/project/164092-npr-new-packet-radio), but with new custom
-hardware, simplified design, and refactored/cleaned firmware.
+It is a fork/derivative of the
+[original NPR project by F4HDK](https://hackaday.io/project/164092-npr-new-packet-radio),
+but with new custom hardware, simplified design, and refactored/cleaned firmware.
 
 
 ## Who is this for?
