@@ -28,10 +28,38 @@ jobs:
           path: build/web/
           if-no-files-found: error
 
+  build-fw:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup arm-none-eabi-gcc
+        uses: carlosperate/arm-none-eabi-gcc-action@v1
+
+      - name: Build
+        working-directory: src
+        run: make
+
+      - name: List outputs
+        run: ls -l src/BUILD || true
+
+      - name: Upload firmware artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: npr70-firmware-${{ github.sha }}
+          path: |
+            src/BUILD/NPR70.bin
+            src/BUILD/NPR70.hex
+            src/BUILD/NPR70.elf
+          if-no-files-found: error
+
   # Deploy job
   deploy:
     # Add a dependency to the build job
-    needs: [build-web]
+    needs: [build-web, build-fw]
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
