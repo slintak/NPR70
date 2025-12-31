@@ -2,8 +2,7 @@
 
 A complete open-source hardware and firmware project for a modern IP packet
 radio modem operating on the 70 cm amateur band (420–450 MHz).  Compatible with
-the NPR (New Packet Radio)
-[protocol by F4HDK](https://hackaday.io/project/164092-npr-new-packet-radio),
+the NPR [New Packet Radio](https://hackaday.io/project/164092-npr-new-packet-radio),
 but with custom hardware and improvements for easier DIY assembly.
 
 ## What is NPR70?
@@ -24,7 +23,6 @@ similar applications on the UHF band.
 It is a fork/derivative of the
 [original NPR project by F4HDK](https://hackaday.io/project/164092-npr-new-packet-radio),
 but with new custom hardware, simplified design, and refactored/cleaned firmware.
-
 
 ## Who is this for?
 
@@ -83,10 +81,28 @@ files are in the [`pcb/`](pcb/) directory.
     - Build firmware by running `make` in the `src/` directory.
     - Firmware binary is in  the `src/BUILD/NPR70.hex` file
     - Flash firmware to the STM32 MCU using an SWD programmer
+      `pyocd load -t stm32l432kc BUILD/NPR70.hex`
 3. **Configuration**: Adjust radio parameters (frequency, bandwidth,
    master/client mode, IP addresses) as described in the
    [original NPR documentation](https://cdn.hackaday.io/files/1640927020512128/NPR70_introduction_EN_v3.6.pdf)
 4. **Connect**: Plug in Ethernet and power, connect antenna, and start experimenting
+
+Basic settings to check (more details in the original NPR documentation):
+
+* `display config`: show current configuration
+* `set <param> <value>`: store value to the given parameter
+* `save`: saves current configuration into the EEPROM
+* `radio on`/`radio off`: turn RF on or off
+* `reboot`: reboot the FW
+
+You have to set your callsign, frequency and modulation. Rest of the parameters
+is up to you and your setup.
+
+```
+set callsign AB1CDE
+set frequency 434.200
+set modulation 22
+```
 
 ## Documentation and References
 
